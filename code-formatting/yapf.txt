@@ -1,0 +1,38 @@
+yapf is a formatter for Python files. It is a tool that automatically formats Python code to conform to the PEP 8 style guide. It is similar to black but has more configuration options.
+
+Example
+An example of the type of formatting that YAPF can do, it will take this ugly code:
+
+x = {  'a':37,'b':42,
+
+'c':927}
+
+y = 'hello ''world'
+z = 'hello '+'world'
+a = 'hello {}'.format('world')
+class foo  (     object  ):
+  def f    (self   ):
+    return       37*-+2
+  def g(self, x,y=42):
+      return y
+def f  (   a ) :
+  return      37+-+a[42-x :  y**3]
+and reformat it into:
+
+x = {'a': 37, 'b': 42, 'c': 927}
+
+y = 'hello ' 'world'
+z = 'hello ' + 'world'
+a = 'hello {}'.format('world')
+
+
+class foo(object):
+    def f(self):
+        return 37 * -+2
+
+    def g(self, x, y=42):
+        return y
+
+
+def f(a):
+    return 37 + -+a[42 - x:y**3]
