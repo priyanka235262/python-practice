@@ -1,1 +1,17 @@
 Pipeline Environment (pipenv) is a tool that aims to bring the best of all packaging worlds (bundled, requirements.txt, setup.py, setup.cfg, etc.) to the Python world. It automatically creates and manages a virtualenv for your projects, as well as adds/removes packages from your Pipfile as you install/uninstall packages. It also generates the ever-important Pipfile.lock, which is used to produce deterministic builds.
+
+pipenv
+
+Purpose: A tool that combines the functionality of virtual environments (like virtualenv) and package management (like pip) into a single command-line tool.
+Key Features:
+Creates and manages virtual environments for Python projects.
+Automatically installs and manages dependencies based on a Pipfile specification.
+Provides a simple and consistent interface for working with Python projects.
+Integrates with common development tools like Git.
+Advantages:
+Simplifies the project setup and dependency management process.
+Ensures reproducible environments across different machines and collaborators.
+Provides a clear and declarative way to define project dependencies.
+Disadvantages:
+Requires learning a new tool and syntax.
+May not be compatible with older projects or workflows.

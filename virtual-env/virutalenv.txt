@@ -1,0 +1,16 @@
+virtualenv is a tool to create isolated Python environments. It creates a folder which contains all the necessary executables to use the packages that a Python project would need.
+
+virtualenv
+
+Purpose: A tool for creating isolated Python environments.
+Key Features:
+Creates a virtual directory containing a Python installation and a set of libraries.
+Allows you to install packages without affecting the system-wide Python installation.
+Provides a clean and isolated environment for each project.
+Advantages:
+Simple and straightforward to use.
+Can be integrated with other tools like pip and setuptools.
+Widely supported and used in the Python community.
+Disadvantages:
+Requires manual management of dependencies and environment creation.
+Can become cumbersome for large projects with complex dependency graphs.
