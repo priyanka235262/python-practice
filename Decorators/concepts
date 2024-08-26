@@ -1,0 +1,145 @@
+A decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure. Decorators are typically applied to functions, and they play a crucial role in enhancing or modifying the behavior of functions. Traditionally, decorators are placed before the definition of a function you want to decorate. In this tutorial, we'll demonstrate how to effectively use decorators in Python functions.
+
+Functions in Python are first class citizens. This means that they support operations such as being passed as an argument, returned from a function, modified, and assigned to a variable. This property is crucial as it allows functions to be treated like any other object in Python, enabling greater flexibility in programming.
+
+#Assigning Functions to Variables
+def plus_one(number):
+    return number + 1
+
+add_one = plus_one
+add_one(5)
+
+#Defining Functions Inside other Functions 
+def plus_one(number):
+    def add_one(number):
+        return number + 1
+
+
+    result = add_one(number)
+    return result
+plus_one(4)
+
+Explanation:This code defines a function called plus_one that takes in a parameter called number.
+• Within the plus_one function, there is another function called add_one that takes in a parameter also called number and returns the value of number + 1.
+• The plus_one function then calls the add_one function with the number parameter passed in, and assigns the result to a variable called result.
+• Finally, the plus_one function returns the value of result.
+• When the code is executed, the plus_one function is called with the argument 4.
+• This causes the add_one function to be called with the argument 4, which returns the value 5.
+• The plus_one function then returns the value of result, which is 5.
+
+#Passing Functions as Arguments to other Functions
+Functions can also be passed as parameters to other functions. Let's illustrate that below.
+
+
+def plus_one(number):
+    return number + 1
+
+def function_call(function):
+    number_to_add = 5
+    return function(number_to_add)
+
+function_call(plus_one)
+
+Explanation:
+This code defines two functions: plus_one and function_call.
+• The plus_one function takes a single argument number and returns the value of number plus 1.
+• The function_call function takes a single argument function, which is expected to be a function object.
+• It then defines a local variable number_to_add and assigns it the value 5.
+• Finally, it calls the function argument with number_to_add as its argument and returns the result.
+• The last line of the code calls the function_call function with plus_one as its argument.
+• This means that function_call will call plus_one with number_to_add equal to 5, and return the result, which is 6.
+• However, since the result is not assigned to a variable or printed, it will not be visible in the output.
+
+#Functions Returning other Functions
+A function can also generate another function. We'll show that below using an example.
+
+
+def hello_function():
+    def say_hi():
+        return "Hi"
+    return say_hi
+hello = hello_function()
+hello()
+
+Exaplanation:
+This code defines a function called hello_function that contains another function called say_hi.
+• The say_hi function simply returns the string "Hi".
+• The hello_function function returns the say_hi function itself.
+• The last two lines of code create a variable called hello and assign it the result of calling hello_function.
+• Since hello_function returns the say_hi function, hello is now a reference to the say_hi function.
+• Finally, the last line of code calls the hello function, which is actually the say_hi function, and returns the string "Hi".
+
+#Nested Functions have access to the Enclosing Function's Variable Scope
+Python allows a nested function to access the outer scope of the enclosing function. This is a critical concept in decorators -- this pattern is known as a Closure.
+
+
+def print_message(message):
+    "Enclosong Function"
+    def message_sender():
+        "Nested Function"
+        print(message)
+
+    message_sender()
+
+print_message("Some random message")
+
+Explanation:
+This code defines a function called print_message that takes a single argument message.
+• Within the print_message function, there is a nested function called message_sender that simply prints the message argument.
+• The message_sender function is then called within the print_message function.
+• When the code is executed, the print_message function is called with the argument "Some random message".
+• This causes the message_sender function to be called, which in turn prints the message "Some random message".
+• The purpose of this code is to demonstrate how nested functions work in Python.
+• The message_sender function is nested within the print_message function, which means it has access to the message argument even though it is not passed as an argument to the message_sender function itself.
+• This is because nested functions have access to the variables and arguments of their enclosing functions.
+
+#Creating Decorators
+def uppercase_decorator(function):
+    def wrapper():
+        func = function()
+        make_uppercase = func.upper()
+        return make_uppercase
+
+    return wrapper
+Explanation:
+This code defines a decorator function called uppercase_decorator that takes in another function as an argument.
+• The decorator function returns a new function called wrapper that wraps the original function.
+• The wrapper function first calls the original function using function(), and then converts the result to uppercase using the upper() method.
+• Finally, it returns the uppercase result.
+• The purpose of this decorator is to modify the output of the original function by converting it to uppercase.
+• To use this decorator, you would apply it to a function by placing @uppercase_decorator above the function definition.
+
+def say_hi():
+    return 'hello there'
+
+decorate = uppercase_decorator(say_hi)
+decorate()
+
+#However, Python provides a much easier way for us to apply decorators. We simply use the @ symbol before the function we'd like to decorate. Let's show that in practice below.
+@uppercase_decorator
+def say_hi():
+    return 'hello there'
+
+say_hi()
+
+
+#Applying Multiple Decorators to a Single Function
+We can use multiple decorators to a single function. However, the decorators will be applied in the order that we've called them. Below we'll define another decorator that splits the sentence into a list. We'll then apply the uppercase_decorator and split_string decorator to a single function.
+
+
+import functools
+def split_string(function):
+    @functools.wraps(function)
+    def wrapper():
+        func = function()
+        splitted_string = func.split()
+        return splitted_string
+
+    return wrapper 
+
+
+    @split_string
+@uppercase_decorator
+def say_hi():
+    return 'hello there'
+say_hi()

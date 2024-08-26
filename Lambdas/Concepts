@@ -1,0 +1,53 @@
+#Advantages of Lambda Functions:
+
+Concise: Lambda functions provide a more concise way to write short functions.
+Readability: In some cases, lambda functions can improve code readability by eliminating unnecessary function definitions.
+Flexibility: They can be used as arguments to higher-order functions, making them versatile.
+Disadvantages of Lambda Functions:
+
+Limited Functionality: Lambda functions are limited to a single expression, making them less suitable for complex logic.
+Readability: In some cases, lambda functions can make code harder to understand if they are overly complex.
+Conclusion:
+
+Lambda functions are a powerful tool in Python, offering a concise and flexible way to define anonymous functions. They are particularly useful for simple tasks and when used with higher-order functions. However, it's important to use them judiciously and consider their limitations to maintain code readability and maintainability.
+
+#Syntax:
+
+Python
+lambda parameters: expression
+
+#Example:
+
+Python
+add = lambda x, y: x + y
+result = add(5, 3)
+print(result)
+
+Key Points:
+
+Lambda functions are often used as arguments to other functions or when you need a quick, one-time function.
+They are typically shorter and more concise than named functions, making them ideal for simple tasks.
+Lambda functions can be used with higher-order functions like map, filter, and reduce.
+
+
+#Common Use Cases:
+
+Sorting Lists:
+Python
+my_list = [(1, 'apple'), (3, 'banana'), (2, 'orange')]
+sorted_list = sorted(my_list, key=lambda x: x[0])
+print(sorted_list)
+
+Filtering Lists:
+Python
+numbers = [1, 2, 3, 4, 5]
+even_numbers = list(filter(lambda x: x % 2 == 0, numbers))
+print(even_numbers)
+
+Mapping Values:
+Python
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = list(map(lambda x: x**2, numbers))
+print(squared_numbers)
+
+
