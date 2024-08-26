@@ -1,0 +1,46 @@
+#Modules in Python are essentially Python files that contain definitions and statements. They serve as organizational units for code, allowing you to break down larger programs into smaller, more manageable components. Modules promote code reusability, modularity, and maintainability.
+
+
+#Key Concepts:
+
+Module Definition: A Python file with a .py extension is considered a module.
+Import Statement: To use the definitions from a module in another file, you use the import statement.
+Module Namespace: Each module creates its own namespace, which is a mapping of names to objects. This helps avoid naming conflicts between different modules.
+
+
+
+Import Methods:
+
+Direct Import:
+
+Import the entire module:
+Python
+import mymodule
+
+Access definitions using dot notation:
+Python
+mymodule.function_name()
+mymodule.variable_name
+
+From-Import:
+
+Import specific definitions:
+Python
+from mymodule import function_name, variable_name
+
+
+Use the imported names directly:
+Python
+function_name()
+variable_name
+
+Import with Alias:
+
+Assign an alias to the module:
+Python
+import mymodule as m
+
+Use the alias to access definitions:
+Python
+m.function_name()
+m.variable_name
